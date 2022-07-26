@@ -20,8 +20,8 @@ async def wake_up():
 
 
 async def scheduler():
-    aioschedule.every().day.at("19:27").do(go_to_sleep)
-    aioschedule.every().day.at("19:32").do(wake_up)
+    aioschedule.every().day.at("23:00").do(go_to_sleep)
+    aioschedule.every().hour.at("13:00").do(wake_up)
 
     while True:
         await aioschedule.run_pending()
@@ -30,4 +30,4 @@ async def scheduler():
 
 def register_handler_notification(dp: Dispatcher):
     dp.register_message_handler(get_chat_id,
-                                lambda word: 'заебался я ' in word.text)
+                                lambda word: 'help ,me' in word.text)
